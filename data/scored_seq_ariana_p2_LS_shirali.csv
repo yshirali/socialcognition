@@ -1,0 +1,18 @@
+time,code,class
+5.052, zone5_(d)_center,1
+6.26, zone6_(m)_plant,1
+153.06, zone5_(d)_center,1
+154.662, zone4_(o)_left,1
+157.861, zone2_(p)_screenLeft,1
+168.664, zone4_(o)_left,1
+169.46, zone2_(p)_screenLeft,1
+177.06, zone4_(o)_left,1
+193.865, zone5_(d)_center,1
+194.659, zone6_(m)_plant,1
+241.864, zone5_(d)_center,1
+242.661, zone4_(o)_left,1
+246.66, zone2_(p)_screenLeft,1
+264.862, zone4_(o)_left,1
+269.66, zone5_(d)_center,1
+270.867, zone6_(m)_plant,1
+295.379,END,0

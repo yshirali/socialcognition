@@ -1,0 +1,73 @@
+time,code,class
+84.964, zone5_(d)_center,1
+85.765, zone4_(o)_left,1
+87.364, zone5_(d)_center,1
+88.169, zone6_(m)_plant,1
+95.372, zone5_(d)_center,1
+97.241, zone3_(s)_right,1
+98.578,zone1_(a)_screenRight,1
+99.644, zone3_(s)_right,1
+100.444, zone5_(d)_center,1
+100.978, zone6_(m)_plant,1
+104.716, zone5_(d)_center,1
+107.384, zone4_(o)_left,1
+112.727, zone2_(p)_screenLeft,1
+114.028, zone4_(o)_left,1
+115.393, zone5_(d)_center,1
+116.193, zone6_(m)_plant,1
+118.595, zone5_(d)_center,1
+119.13, zone3_(s)_right,1
+120.197,zone1_(a)_screenRight,1
+121.269, zone3_(s)_right,1
+122.337, zone5_(d)_center,1
+122.87, zone6_(m)_plant,1
+131.678, zone5_(d)_center,1
+133.281, zone4_(o)_left,1
+135.145, zone2_(p)_screenLeft,1
+138.884, zone4_(o)_left,1
+142.887, zone5_(d)_center,1
+143.422, zone6_(m)_plant,1
+145.291, zone5_(d)_center,1
+145.556, zone3_(s)_right,1
+147.959,zone1_(a)_screenRight,1
+154.635, zone3_(s)_right,1
+156.768, zone5_(d)_center,1
+157.304, zone6_(m)_plant,1
+160.237, zone5_(d)_center,1
+160.774, zone3_(s)_right,1
+161.574,zone1_(a)_screenRight,1
+164.779, zone3_(s)_right,1
+170.918,zone1_(a)_screenRight,1
+175.189, zone3_(s)_right,1
+176.787, zone5_(d)_center,1
+178.389, zone4_(o)_left,1
+181.325, zone5_(d)_center,1
+183.465, zone3_(s)_right,1
+188,zone1_(a)_screenRight,1
+193.07, zone3_(s)_right,1
+194.938, zone5_(d)_center,1
+195.739, zone6_(m)_plant,1
+198.68, zone5_(d)_center,1
+199.481, zone4_(o)_left,1
+200.544, zone2_(p)_screenLeft,1
+200.811, zone4_(o)_left,1
+201.883, zone5_(d)_center,1
+203.216, zone3_(s)_right,1
+205.35,zone1_(a)_screenRight,1
+206.121, zone3_(s)_right,1
+209.087,zone1_(a)_screenRight,1
+224.568, zone3_(s)_right,1
+225.903,zone1_(a)_screenRight,1
+236.582, zone3_(s)_right,1
+237.649,zone1_(a)_screenRight,1
+247.527, zone3_(s)_right,1
+249.664,zone1_(a)_screenRight,1
+277.692, zone3_(s)_right,1
+280.09,zone1_(a)_screenRight,1
+283.561, zone3_(s)_right,1
+286.197,zone1_(a)_screenRight,1
+301.716, zone3_(s)_right,1
+302.213,zone1_(a)_screenRight,1
+423.801, zone3_(s)_right,1
+424.718,zone1_(a)_screenRight,1
+425.946,END,0

@@ -1,0 +1,75 @@
+time,code,class
+5.381, zone3_(s)_right,1
+8.171, zone5_(d)_center,1
+9.372, zone4_(o)_left,1
+11.766, zone2_(p)_screenLeft,1
+15.367, zone4_(o)_left,1
+17.767, zone5_(d)_center,1
+21.767, zone6_(m)_plant,1
+24.567, zone5_(d)_center,1
+25.373, zone4_(o)_left,1
+26.169, zone2_(p)_screenLeft,1
+38.167, zone4_(o)_left,1
+40.969, zone5_(d)_center,1
+41.773, zone6_(m)_plant,1
+43.367, zone5_(d)_center,1
+44.166, zone3_(s)_right,1
+45.367,zone1_(a)_screenRight,1
+48.168, zone3_(s)_right,1
+48.969,zone1_(a)_screenRight,1
+53.766, zone3_(s)_right,1
+54.166,zone1_(a)_screenRight,1
+58.169, zone3_(s)_right,1
+58.973,zone1_(a)_screenRight,1
+91.766, zone3_(s)_right,1
+93.366, zone5_(d)_center,1
+94.567, zone6_(m)_plant,1
+98.969, zone3_(s)_right,1
+100.167,zone1_(a)_screenRight,1
+108.17, zone3_(s)_right,1
+108.968,zone1_(a)_screenRight,1
+120.572, zone3_(s)_right,1
+121.367,zone1_(a)_screenRight,1
+131.367, zone3_(s)_right,1
+134.568,zone1_(a)_screenRight,1
+146.57, zone3_(s)_right,1
+147.766,zone1_(a)_screenRight,1
+177.772, zone3_(s)_right,1
+179.77,zone1_(a)_screenRight,1
+217.774, zone3_(s)_right,1
+221.766,zone1_(a)_screenRight,1
+229.366, zone3_(s)_right,1
+232.971, zone5_(d)_center,1
+234.972, zone4_(o)_left,1
+236.169, zone2_(p)_screenLeft,1
+243.371, zone4_(o)_left,1
+245.371, zone5_(d)_center,1
+246.173, zone6_(m)_plant,1
+248.966, zone3_(s)_right,1
+250.166,zone1_(a)_screenRight,1
+252.166, zone3_(s)_right,1
+254.967, zone5_(d)_center,1
+255.766, zone6_(m)_plant,1
+258.569, zone5_(d)_center,1
+259.772, zone4_(o)_left,1
+260.973, zone2_(p)_screenLeft,1
+267.372, zone4_(o)_left,1
+269.373, zone5_(d)_center,1
+272.573, zone3_(s)_right,1
+273.767,zone1_(a)_screenRight,1
+276.166, zone3_(s)_right,1
+277.774, zone5_(d)_center,1
+278.566, zone6_(m)_plant,1
+282.567, zone4_(o)_left,1
+285.372, zone5_(d)_center,1
+288.968, zone3_(s)_right,1
+291.371,zone1_(a)_screenRight,1
+294.568, zone3_(s)_right,1
+295.366,zone1_(a)_screenRight,1
+298.202, zone3_(s)_right,1
+298.658,zone1_(a)_screenRight,1
+300.49, zone3_(s)_right,1
+301.864, zone5_(d)_center,1
+304.144, zone4_(o)_left,1
+305.562, zone2_(p)_screenLeft,1
+305.562,END,0

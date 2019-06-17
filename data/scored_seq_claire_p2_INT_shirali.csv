@@ -1,0 +1,36 @@
+time,code,class
+0.633, zone5_(d)_center,1
+1.428, zone6_(m)_plant,1
+86.751, zone5_(d)_center,1
+88.753, zone3_(s)_right,1
+91.947, zone5_(d)_center,1
+96.747, zone4_(o)_left,1
+103.148, zone5_(d)_center,1
+103.951, zone6_(m)_plant,1
+124.713, zone5_(d)_center,1
+129.908, zone6_(m)_plant,1
+141.515, zone5_(d)_center,1
+144.709, zone6_(m)_plant,1
+167.914, zone5_(d)_center,1
+168.307, zone4_(o)_left,1
+174.71, zone2_(p)_screenLeft,1
+188.711, zone4_(o)_left,1
+191.507, zone5_(d)_center,1
+193.108, zone6_(m)_plant,1
+204.707, zone5_(d)_center,1
+216.707, zone6_(m)_plant,1
+223.907, zone5_(d)_center,1
+225.913, zone6_(m)_plant,1
+236.311, zone5_(d)_center,1
+240.71, zone6_(m)_plant,1
+244.707, zone5_(d)_center,1
+246.707, zone6_(m)_plant,1
+249.509, zone5_(d)_center,1
+250.713, zone4_(o)_left,1
+259.51, zone2_(p)_screenLeft,1
+263.913, zone4_(o)_left,1
+274.71, zone5_(d)_center,1
+275.514, zone6_(m)_plant,1
+288.652, zone5_(d)_center,1
+294.154, zone3_(s)_right,1
+296.908,END,0

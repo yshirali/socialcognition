@@ -1,0 +1,49 @@
+time,code,class
+39.885, zone5_(d)_center,1
+43.089, zone6_(m)_plant,1
+100.482, zone5_(d)_center,1
+104.086, zone6_(m)_plant,1
+143.792, zone5_(d)_center,1
+146.994, zone3_(s)_right,1
+148.996,zone1_(a)_screenRight,1
+150.998, zone3_(s)_right,1
+151.802,zone1_(a)_screenRight,1
+157.405, zone3_(s)_right,1
+159.006, zone5_(d)_center,1
+161.008, zone6_(m)_plant,1
+169.016, zone5_(d)_center,1
+170.218, zone6_(m)_plant,1
+176.591, zone5_(d)_center,1
+177.421, zone4_(o)_left,1
+179.026, zone2_(p)_screenLeft,1
+180.596, zone4_(o)_left,1
+186.601, zone5_(d)_center,1
+188.236, zone6_(m)_plant,1
+195.842, zone5_(d)_center,1
+196.609, zone6_(m)_plant,1
+215.461, zone5_(d)_center,1
+216.261, zone3_(s)_right,1
+217.461,zone1_(a)_screenRight,1
+221.467, zone3_(s)_right,1
+231.877,zone1_(a)_screenRight,1
+234.648, zone3_(s)_right,1
+254.666,zone1_(a)_screenRight,1
+255.901, zone3_(s)_right,1
+258.302, zone5_(d)_center,1
+259.507, zone6_(m)_plant,1
+280.691, zone5_(d)_center,1
+282.326, zone6_(m)_plant,1
+293.537, zone5_(d)_center,1
+293.939, zone3_(s)_right,1
+303.548, zone5_(d)_center,1
+311.558, zone3_(s)_right,1
+315.561, zone5_(d)_center,1
+316.36, zone6_(m)_plant,1
+321.164, zone5_(d)_center,1
+322.734, zone4_(o)_left,1
+325.171, zone2_(p)_screenLeft,1
+338.75, zone4_(o)_left,1
+347.997, zone5_(d)_center,1
+349.595, zone6_(m)_plant,1
+363.609, zone5_(d)_center,1
+376.977,END,0

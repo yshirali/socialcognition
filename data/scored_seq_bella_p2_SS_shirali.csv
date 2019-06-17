@@ -1,0 +1,14 @@
+time,code,class
+10.045, zone5_(d)_center,1
+12.427, zone4_(o)_left,1
+17.107, zone2_(p)_screenLeft,1
+34.545, zone4_(o)_left,1
+163.825, zone5_(d)_center,1
+164.35, zone6_(m)_plant,1
+272.265, zone3_(s)_right,1
+274.347,zone1_(a)_screenRight,1
+279.027, zone3_(s)_right,1
+283.705, zone5_(d)_center,1
+291.563, zone4_(o)_left,1
+296.976, zone2_(p)_screenLeft,1
+299.394,END,0

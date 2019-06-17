@@ -1,0 +1,317 @@
+---
+title: "mate choice dataset"
+author: "Luke Reding_ys"
+date: "05/24/2019"
+output:
+  html_document:
+    toc: true
+    toc_float: true 
+    geometry: margin=1.6in
+    theme: "flatly"
+    fontsize: 11pt
+---
+
+```{r eval = FALSE}
+
+library(tidyverse)
+
+```
+
+
+```{r}
+
+data_path <-"~/data_comgar_2019/matechoice_FRI_2019/data"
+
+file_list <- dir(data_path,
+                        pattern = "*.csv",
+                        recursive = TRUE)
+head(file_list)
+
+```
+
+```{r}
+
+glue::glue("There are {length(file_list)} csv files in {data_path}.")
+
+```
+
+## create functions to extract useful information
+
+Note filenames are named differently compared with the sociality data.
+
+Mc = mate choice
+Pre/post = pre/post numerosity
+fid = fish ID (this will be followed by a number)
+p1, p2, p3 = part (p1=5min background, p2=first   half, p3= second half)
+Cornish= this is the scorer last name 
+LargeMale_right= large male position 
+
+```{r}
+# FUNCTIONS
+extractExperiment <- function(filename) {
+  str_split(basename(filename), "_")[[1]][1]
+}
+
+extractPrePost <- function(filename) {
+  str_split(basename(filename), "_")[[1]][2]
+}
+
+extractFishID <- function(filename) {
+  str_split(basename(filename), "_")[[1]][3]
+}
+
+extractHalf <- function(filename) {
+  str_split(basename(filename), "_")[[1]][4]
+}
+
+extractScorerName <- function(filename) {
+  str_split(basename(filename), "_")[[1]][5]
+}
+
+extractLargeMalePosition <- function(filename) {
+  str_split(basename(filename), "_")[[1]][7]
+}
+
+extractFishName <- function(filename) {
+  str_split(basename(filename), "_")[[1]][8]
+}
+
+extractTreatment <- function(filename) {
+  str_split(basename(filename), "_")[[1]][9]
+}
+
+# transits
+numberTransits <- function(dataframe) {
+  nrow(dataframe) - 1
+}
+
+# timeSpent
+getTimeSpentInEachRegion <- function(dataframe) {
+  
+  # get the time the first starts
+  startTime <- 0
+  
+  # calculate the time the trial ends
+  endTime <- startTime + 300
+  
+  dataframe %>% 
+    # make all the values of 'time' greater than endTime equal to endTime
+    mutate(time = replace(time, time > endTime, endTime)) %>% 
+    #take the differences. Any scoring after the end of the trial will get a 0 for timeSpent
+    mutate(timeSpent = lead(time, default = 0) - time) %>% 
+    # get rid of any zones where timeSpent = 0
+    filter(timeSpent > 0) %>% 
+    group_by(code) %>%
+    # use summarise to distill information (take a sum or average)
+    summarise(totalTime = sum(timeSpent)) 
+}
+
+getProportionOfTimeInEachRegion <- function(dataframe) {
+  dataframe %>%
+    getTimeSpentInEachRegion %>%
+    group_by(code) %>%
+       # use summarise to distill information (take a sum or average)
+    summarise(totalTime = sum(timeSpent)) %>% 
+     # use mutate to add columns
+    mutate(proportionTime = totalTime / sum(totalTime)) 
+   
+}
+
+# INTERACTION Stuff
+getLatencyToEnterInteraction <- function(dataframe) {
+  # get the first value of `time`. This is when the trial started
+  timeOfTrialStart <- dataframe %>% slice(1) %>% pull(time)
+  timeOfFirstInteractionZone <- dataframe %>% 
+    filter(code == "interaction") %>% 
+    slice(1) %>%
+    pull(time)
+  
+  # if the fish never entered that zone, code as 600  (*== '=' testing equality)
+  if(length(timeOfFirstInteractionZone) == 0) {
+    timeOfFirstInteractionZone <- 300 + timeOfTrialStart
+  }
+  
+  # take the difference
+  timeOfFirstInteractionZone - timeOfTrialStart
+  
+  # timeOfFirstInteractionZone <- timeOfTrialStart
+  }
+
+#if first interaction zone is first code
+
+FirstCodeIsInteractionCorrection <- function(dataframe) {
+  getLatencyToEnterInteraction %>% 
+    if(value == 0) {
+      timeOfFirstInteraction <- timeOfTrialStart
+    }
+}
+
+getLatencyToEnterLeftScreen <- function(dataframe) {
+  leftScreeenLatency <- dataframe %>%
+    filter(code == "left screen") %>%
+    slice(1) %>%
+    pull(time)%>%
+    .[1]
+  
+  if_else(is.null(leftScreeenLatency), 300, leftScreeenLatency)
+}
+
+getLatencyToEnterRightScreen <- function(dataframe) {
+  rightScreeenLatency <- dataframe %>%
+    filter(code == "right screen") %>%
+    slice(1) %>%
+    pull(time) %>%
+    .[1]
+  
+  if_else(is.null(rightScreeenLatency), 300, rightScreeenLatency)
+}
+
+getLatencyToEnterPlant <- function(dataframe) {
+  plantLatency <- dataframe %>%
+    filter(code == "plant") %>%
+    slice(1) %>%
+    pull(time)%>%
+    .[1]
+  
+  if_else(is.null(plantLatency), 300, plantLatency)
+}
+
+clean_codenames <- function(data){
+  # read in the csv
+  # create a column for filename
+  # create new variables
+  # get the transits and proportions  
+  #'Mutate = adds or overwrites columns, 
+  # map_dbl returns a floating decimal..
+  # map replaces a for loop
+data %>%
+  mutate(code=case_when(
+    code == "a" ~ "right screen",
+    code == "s" ~ "right side", 
+    code == "d" ~ "center",
+    code == "m" ~ "plant",
+    code == "o" ~ "left side",
+    code == "p" ~ "left screen",
+    TRUE ~ "unknown"
+  ))
+}
+
+```
+
+Let's make sure these have the expected behavior:
+
+
+Previously we had a function that calculated the latency to enter the interaction zone. 
+Since we don't have an interaction zone, I've deleted this function in this document.
+
+```{r eval = FALSE}
+
+full_dataframe <- tibble(filename = file_list) %>%
+  mutate(file_contents = map(filename, ~ read_csv(file.path(data_path, .)))) %>%
+  mutate(file_contents = map(file_contents, clean_codenames)) %>%
+  mutate(number_transits = map_dbl(file_contents, numberTransits),
+         timeSpent = map(file_contents, getTimeSpentInEachRegion),
+         latency_plant = map_dbl(file_contents, getLatencyToEnterPlant),
+         latency_right_screen = map_dbl(file_contents, getLatencyToEnterRightScreen),
+         latency_left_screen = map_dbl(file_contents, getLatencyToEnterLeftScreen)
+
+           
+         # latencyPlant = map(file_contents, getLatencyToEnterPlant),
+         # latencyRightScreen = map(file_contents, getLatencyToEnterRightScreen),
+         # latencyLeftScreen = map(file_contents, getLatencyToEnterLeftScreen)
+  ) %>%
+  unnest(timeSpent) %>%
+  # complete(filename, code, fill = list(totalTime = 0, proportionTime = 0)) %>% 
+  # I'm getting rid of this line because it cause more harm than good. 
+  # We will fill these values with 0 later on in the process
+  rowwise() %>%
+  mutate(experiment = extractExperiment(filename),
+         fishID = extractFishID(filename),
+         fishName = extractFishName(filename),
+         treatment = extractTreatment(filename),
+         half = extractHalf(filename),
+         scorer = extractScorerName(filename),
+         largeMalePosition = extractLargeMalePosition(filename),
+         prePost = extractPrePost(filename)
+         
+  ) %>%
+  ungroup # undos rowwise(), which we don't need anymore
+sample_n(full_dataframe, 10)
+
+View(full_dataframe)
+
+```
+
+Right now, there's a row for each zone in each of the fish's trials for each observer.
+
+We might want the data in a different format, where there's a single row for each trial for each observer. 
+When this is the case, look at the `tidyr` package.
+
+```{r eval = FALSE}
+
+alternate_df <- full_dataframe %>%
+  select(filename, code, totalTime, number_transits, scorer, half, experiment,fishID, largeMalePosition, %>%
+           prePost, latency_plant, latency_right_screen, latency_left_screen) %>%
+  spread(code, totalTime) %>% # create columns for each zone
+  replace(., is.na(.), 0) # replace NAs (where the fish didn't enter a zone) with 0
+
+View(alternate_df)
+sample_n(alternate_df, 6)
+
+```
+
+###REQUEST 21 May 2019.  We're not sure where this goes, we would like to take the Median 
+across all the 3-5 scorers that have scored the same video.  So for instance, where experiment, 
+fishID, side,half, camera were identical... and the only difference was ScorerName.  
+
+```{r eval = FALSE}
+medians_result <- full_dataframe %>%
+  group_by(experiment, fishID, half, code, prePost, largeMalePosition) %>%
+  summarise_at(c("totalTime", "number_transits"), median, na.rm = TRUE)
+
+medians_result %>% head
+```
+
+
+```{r eval = FALSE}
+
+medians_result <- full_dataframe %>%
+  group_by(experiment, fishID, half, code, prePost, largeMalePosition) %>%
+  summarise_at(c("totalTime", "number_transits"), median, na.rm = FALSE)
+
+medians_result %>% head
+```
+
+###REQUEST 21 May 2019: AFTER we calculate the medians, we then want to AVERAGE 
+between the 1st and 2nd halves (extractHalf) of the medians of proportion time in each zone. 
+{We reasoned that because different students scored 1st and 2nd halves, it didn't makes sense 
+to pool before we caluclated the median}
+
+I'm a bit confused here
+
+
+```{r eval = FALSE}
+
+# stop here and inspect
+medians_result %>%
+  select(experiment, fishID, half, code, prePost, largeMalePosition, proportionTime) %>%
+  spread(half, proportionTime) %>%
+  filter(fishID == "fid1") %>%
+  View
+  
+```
+
+```{r eval = FALSE}
+
+medians_result %>%
+  select(experiment, fishID, half, code, prePost, largeMalePosition, proportionTime) %>%
+  spread(half, proportionTime) %>%
+  rowwise() %>%
+  mutate(averaged = mean(c(p1, p2, p3), na.rm = TRUE)) %>%
+  ungroup %>%
+  replace_na(list(p1 = 0, p2 = 0, p3 = 0)) # fill NAs with 0
+
+```
+
+
+
